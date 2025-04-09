@@ -38,7 +38,7 @@ def handle_events(item_position):
 def draw_line(screen, color, start_pos, end_pos, thickness):
     pygame.draw.line(screen, color, start_pos, end_pos, thickness)
 
-def draw_rect(screen, rect, color, thickness):
+def draw_rect(screen, color, rect, thickness):
     pygame.draw.rect(screen, color, rect, thickness)
 
 def draw_circle(screen, center, radius, color, thickness):
@@ -63,8 +63,13 @@ def main():
 
     # font_name = pygame.font.Font('Arial', 30)
     text_position = [150, 100]
-    text = 'hi'
+    text = 'DVD'
     # click_sound = pygame.mixer.Sound('the sound')
+    
+    rect_x = 50
+    rect_y = 50
+    rect_change_x = 5
+    rect_change_y = 5
 
     while running:
         running = handle_events(text_position)
@@ -73,7 +78,19 @@ def main():
         # Necessary for playing sounds
         # click_sound.play()
             
-        draw_text(screen, text, 30, config.COLOR_BLACK, text_position)
+        
+        
+        
+        draw_rect(screen, config.COLOR_BLACK, [rect_x, rect_y, 50, 50], 0)
+        draw_text(screen, text, 30, config.COLOR_RED, [rect_x, rect_y])
+        rect_y += rect_change_y
+        rect_x += rect_change_x
+
+
+        if rect_y > 550 or rect_y < 0:
+            rect_change_y = rect_change_y * - 1
+        if rect_x > 750 or rect_x < 0: 
+            rect_change_x = rect_change_x * - 1
         
         # Calling a grid (Comment this out after you are done coding)
         grid(screen)
