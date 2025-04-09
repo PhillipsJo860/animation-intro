@@ -56,6 +56,8 @@ def draw_text(screen, text, font_size, text_col, text_pos, font_name=None, bold=
     screen.blit(img, text_pos)
 
 
+
+
 def main():
     screen = init_game()
     clock = pygame.time.Clock()
@@ -68,8 +70,8 @@ def main():
     
     rect_x = 50
     rect_y = 50
-    rect_change_x = 5
-    rect_change_y = 5
+    rect_change_x = 3
+    rect_change_y = 3
 
     while running:
         running = handle_events(text_position)
@@ -77,23 +79,20 @@ def main():
 
         # Necessary for playing sounds
         # click_sound.play()
-            
-        
-        
         
         draw_rect(screen, config.COLOR_BLACK, [rect_x, rect_y, 50, 50], 0)
-        draw_text(screen, text, 30, config.COLOR_RED, [rect_x, rect_y])
+        draw_text(screen, text, 35, config.COLOR_RED, [rect_x, rect_y])
         rect_y += rect_change_y
         rect_x += rect_change_x
 
 
-        if rect_y > 550 or rect_y < 0:
+        if rect_y > 549 or rect_y < 0:
             rect_change_y = rect_change_y * - 1
-        if rect_x > 750 or rect_x < 0: 
+        if rect_x > 749 or rect_x < 0: 
             rect_change_x = rect_change_x * - 1
         
         # Calling a grid (Comment this out after you are done coding)
-        grid(screen)
+        # grid(screen)
         
         pygame.display.flip()
 
